@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Orbitron', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  
+  --ufo-cyan:   #00FFD4;
+  --ufo-purple: #8B5CF6;
+  --ufo-amber:  #F59E0B;
+  --ufo-dark:   #030712;
+  --ufo-card:   #0d1117;
+  --ufo-border: #1a2332;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+}
+
+body {
+  background: var(--ufo-dark);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ufo-dark); }
+::-webkit-scrollbar-thumb { background: #1a2332; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ufo-cyan); }
+
+/* Selection */
+::selection { background: rgba(0, 255, 212, 0.2); color: var(--ufo-cyan); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Glow utilities */
+.glow-cyan  { box-shadow: 0 0 20px rgba(0, 255, 212, 0.3); }
+.glow-purple{ box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+.text-glow  { text-shadow: 0 0 20px rgba(0, 255, 212, 0.6); }
+
+/* Terminal cursor */
+.cursor::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  color: var(--ufo-cyan);
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--ufo-cyan) 0%, var(--ufo-purple) 60%, var(--ufo-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #fff 0%, var(--ufo-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card glass effect */
+.glass-card {
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--ufo-border);
+}
+
+/* Scanline effect */
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 212, 0.01) 2px,
+    rgba(0, 255, 212, 0.01) 4px
+  );
+}

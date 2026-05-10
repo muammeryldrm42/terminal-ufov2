@@ -1,0 +1,13 @@
+{
+  "name": "terminal-of-ufo",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": ["agent", "website"],
+  "scripts": {
+    "agent": "npm run dev --workspace=agent",
+    "website": "npm run dev --workspace=website",
+    "build:agent": "npm run build --workspace=agent",
+    "build:website": "npm run build --workspace=website",
+    "build": "npm run build:agent && npm run build:website"
+  }
+}
